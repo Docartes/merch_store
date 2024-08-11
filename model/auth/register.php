@@ -22,7 +22,7 @@ function check_login($username, $email) {
 	$data = mysqli_query($conn, "SELECT * FROM account_management");
 
 	while ($row = mysqli_fetch_assoc($data)) {
-		if ( $row['username'] == $username || $row['email'] == $email ) {
+		if ( $row['username'] == $username && $row['email'] == $email ) {
 			return true;
 		}
 	}
@@ -39,17 +39,15 @@ function register($username, $email, $password) {
 
 	$encrypted_password = encrypt_password($password);
 
-	if ( check_login($username, $email) == true ) {
-		return "Username dan email sudah terdaftar";
-	}
-
+	
 	if ( (strlen($password) >=  8) && (check_login($username, $email) == false) ) {
-		mysqli_query($conn, "INSERT INTO account_management (username, email, password) VALUES('$username', '$email', '$encrypted_password')");
+		$data = mysqli_query($conn, "INSERT INTO account_management (username, email, password) VALUES('$username', '$email', '$encrypted_password')");
 
-		return 'Register berhasil';
+		header("Location: ../views/auth_views/register.php?status=Register berhasil");
+		return true;
 	}
 
-	if ( strlen($password) < 8 ) {
-		return "Panjang password minimal 8 karakter";
+	if ( check_login($username, $email) == true ) {
+		return false;
 	}
 }
