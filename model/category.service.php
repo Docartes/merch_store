@@ -1,6 +1,6 @@
 <?php  
  
-include './connection/connection.php';
+include 'connection/connection.php';
 
 function check_duplicate($category_name) {
 	global $conn;
@@ -15,6 +15,16 @@ function check_duplicate($category_name) {
 
 	return false;
 }
+
+function getCategoryById($id) {
+	global $conn;
+
+	$query = "SELECT * FROM category WHERE id = '$id'";
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;  
+}  
 
 function readCategory() {
 	global $conn;
@@ -62,4 +72,3 @@ function updateCategory($id, $category_name) {
 
 	return mysqli_query($conn, $query);  
 }
-

@@ -1,6 +1,6 @@
 <?php  
  
-include './connection/connection.php';
+include 'connection/connection.php';
 
 function check_duplicate($product_name) {
 	global $conn;

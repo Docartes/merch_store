@@ -1,5 +1,5 @@
 <?php  
-include './connection/connection.php';
+include 'connection/connection.php';
 
 function check_duplicate($blog_title) {
 	global $conn;
