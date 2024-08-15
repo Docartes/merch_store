@@ -18,9 +18,11 @@ $failed_message = $_SESSION['failed'];
 	<?php echo $css; ?>
 	<title>Login Page</title>
 </head>
-<body>
+<body style="font-family: Karla">
 
-	<div class="d-flex flex-column justify-content-center align-items-center" style="font-family: Karla;">
+	<?php echo $navbar; ?>
+
+	<div class="d-flex flex-column justify-content-center align-items-center mt-4" style="font-family: Karla;">
 		<h1 class="text-center my-4">Login Page</h1>
 		<form action="../../controllers/login.controller.php" method="post" class="row g-2 mx-4">
 			<input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off">

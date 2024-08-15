@@ -18,9 +18,11 @@ $duplicate_message = $_SESSION['duplicate'];
 	<?php echo $css; ?>
 	<title>Register Page</title>
 </head>
-<body>
+<body style="font-family: Karla">
 
-	<div class="d-flex flex-column justify-content-center align-items-center" style="font-family: Karla;">
+	<?php echo $navbar; ?>
+
+	<div class="d-flex flex-column justify-content-center align-items-center mt-4" style="font-family: Karla;">
 		<h1 class="text-center my-4">Register Page</h1>
 		<form action="../../controllers/register.controller.php" method="post" class="mx-4 row g-2">
 			<input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off">
