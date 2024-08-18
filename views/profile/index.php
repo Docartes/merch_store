@@ -5,7 +5,6 @@ session_start();
 $login = $_SESSION['login'];
 $user_data = $_SESSION['data_login'];
 
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ $user_data = $_SESSION['data_login'];
 	<?php endif; ?>
 
 	<?php if ( $login !== true ): ?>
-		<?php echo $navbar['not_login']; ?>
+		<?php header("Location: ../home/") ?>
 	<?php endif; ?>
 
 

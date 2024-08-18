@@ -17,7 +17,10 @@ if ( login($username, $password)  == false ) {
 	header("Location: ../views/auth_views/login.php");
 }
 
-if ( login($username, $password)  == true ) {
-	$_SESSION['succes'] = "login berhasil";
-	header("Location: ../views/auth_views/login.php");
+$login = login($username, $password);
+
+if ( is_array($login) ) {
+	$_SESSION['login'] = true;
+	$_SESSION['data_login'] = $login;
+	header("Location: ../views/home");
 }

@@ -20,7 +20,7 @@ $duplicate_message = $_SESSION['duplicate'];
 </head>
 <body style="font-family: Karla">
 
-	<?php echo $navbar; ?>
+	<?php echo $navbar['not_login']; ?>
 
 	<div class="d-flex flex-column justify-content-center align-items-center mt-4" style="font-family: Karla;">
 		<h1 class="text-center my-4">Register Page</h1>

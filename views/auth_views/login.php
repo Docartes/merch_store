@@ -5,7 +5,6 @@ session_start();
 include "../bootstrap/bootstrap.php";
 
 $error_message = $_SESSION['error'];
-$success_message = $_SESSION['succes'];
 $failed_message = $_SESSION['failed'];
 
 ?>
@@ -20,7 +19,7 @@ $failed_message = $_SESSION['failed'];
 </head>
 <body style="font-family: Karla">
 
-	<?php echo $navbar; ?>
+	<?php echo $navbar['not_login']; ?>
 
 	<div class="d-flex flex-column justify-content-center align-items-center mt-4" style="font-family: Karla;">
 		<h1 class="text-center my-4">Login Page</h1>
@@ -36,13 +35,6 @@ $failed_message = $_SESSION['failed'];
 		<?php if (isset($error_message)): ?>
 			<div class="alert alert-danger" style="font-family: Karla;" role="alert">
 	  		<?php echo $error_message ?>
-			</div>
-			<?php session_destroy(); ?>
-		<?php endif; ?>
-
-		<?php if (isset($success_message)): ?>
-			<div class="alert alert-success" style="font-family: Karla;" role="alert">
-	  		<?php echo $success_message ?>
 			</div>
 			<?php session_destroy(); ?>
 		<?php endif; ?>
