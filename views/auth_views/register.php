@@ -3,10 +3,14 @@ session_start();
 
 include "../bootstrap/bootstrap.php";
 
-$error_message = $_SESSION['error'];
-$success_message = $_GET['status'];
-$failed_message = $_SESSION['failed'];
-$duplicate_message = $_SESSION['duplicate'];
+if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {	
+	$error_message = $_SESSION['error'];
+	$success_message = $_GET['status'];
+	$failed_message = $_SESSION['failed'];
+	$duplicate_message = $_SESSION['duplicate'];
+}
+
+
 
 ?>
 

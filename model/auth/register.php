@@ -41,10 +41,9 @@ function register($username, $email, $password) {
 
 	
 	if ( (strlen($password) >=  8) && (check_login($username, $email) == false) ) {
-		$data = mysqli_query($conn, "INSERT INTO account_management (username, email, password) VALUES('$username', '$email', '$encrypted_password')");
+		$data = mysqli_query($conn, "INSERT INTO account_management (name, email, password) VALUES('$username', '$email', '$encrypted_password')");
 
 		header("Location: ../views/auth_views/register.php?status=Register berhasil");
-		return true;
 	}
 
 	if ( check_login($username, $email) == true ) {

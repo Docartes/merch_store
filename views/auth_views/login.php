@@ -4,8 +4,10 @@ session_start();
 
 include "../bootstrap/bootstrap.php";
 
-$error_message = $_SESSION['error'];
-$failed_message = $_SESSION['failed'];
+if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {
+	$error_message = $_SESSION['error'];
+	$failed_message = $_SESSION['failed'];	
+}
 
 ?>
 

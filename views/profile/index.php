@@ -14,7 +14,7 @@ $user_data = $_SESSION['data_login'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php include "../bootstrap/bootstrap.php"; ?>
 	<?php echo $css; ?>
-	<title>Home</title>
+	<title>Profile - <?php echo $user_data['username']; ?></title>
 </head>
 <body style="font-family: Karla;">
 	<?php if ( isset($login) && $user_data['role'] == 'user' ): ?>

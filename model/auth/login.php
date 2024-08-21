@@ -20,8 +20,8 @@ function login($username, $password) {
 	$data = mysqli_query($conn, "SELECT * FROM account_management");
 
 	while ( $row = mysqli_fetch_assoc($data) ) {
-		if ( $row['username'] == htmlspecialchars($username) && decrypt_password($row['password']) == htmlspecialchars($password) ) {
-			return ["username" => $row['username'], "id" => $row['id'], "email" => $row['email'], "role" => $row['role']];
+		if ( $row['name'] == htmlspecialchars($username) && decrypt_password($row['password']) == htmlspecialchars($password) ) {
+			return ["username" => $row['name'], "id" => $row['id'], "email" => $row['email'], "role" => $row['role']];
 		}
 	}
 
