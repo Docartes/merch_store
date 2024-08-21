@@ -123,15 +123,15 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
 				<div class="row justify-content-between">
 					<div class="col-lg-7 mb-5 mb-lg-0">
 						<div class="imgs-grid">
-							<div class="grid grid-1"><img src="../images/img-grid-1.jpg" alt="Untree.co"></div>
-							<div class="grid grid-2"><img src="../images/img-grid-2.jpg" alt="Untree.co"></div>
-							<div class="grid grid-3"><img src="../images/img-grid-3.jpg" alt="Untree.co"></div>
+							<div class="grid grid-1"><img src="../images/hnd.png" alt="Untree.co"></div>
+							<div class="grid grid-2"><img src="../images/kst.png" alt="Untree.co"></div>
+							<div class="grid grid-3"><img src="../images/srg.png" alt="Untree.co"></div>
 						</div>
 					</div>
 					<div class="col-lg-5 ps-lg-5">
 						<h2 class="section-title mb-4">We Help You Find Various Band Merchandise Items</h2>
 						<p>Kami membantu Anda menemukan berbagai item merchandise band dengan mudah dan cepat, mulai dari kaos hingga aksesori eksklusif. Dengan koleksi yang luas dan terkurasi, Anda dapat menemukan barang yang sesuai dengan selera dan kebutuhan Anda. Nikmati pengalaman berbelanja yang menyenangkan dengan dukungan kami dalam mencari merchandise band favorit Anda.</p>
-						<p><a herf="#" class="btn">Explore</a></p>
+						<p><a herf="#" class="btn btn-secondary">Explore</a></p>
 					</div>
 				</div>
 			</div>
