@@ -1,8 +1,10 @@
 <?php  
 
+include "../model/connection/connection.php";
+
 $account_management_table = "
 CREATE TABLE account_management (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
@@ -13,7 +15,7 @@ CREATE TABLE account_management (
 
 $category_table = "
 CREATE TABLE category (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
@@ -21,12 +23,12 @@ CREATE TABLE category (
 
 $product_table = "
 CREATE TABLE products (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	name TEXT NOT NULL,
 	images TEXT NOT NULL,
 	price DOUBLE NOT NULL,
 	quantity_in_stock INT NOT NULL DEFAULT 0,
-	categoryId uuid NOT NULL,
+	categoryId INT NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (categoryId) REFERENCES category(id)
@@ -34,11 +36,13 @@ CREATE TABLE products (
 
 $blogs_table = "
 CREATE TABLE blogs (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	title VARCHAR(255) NOT NULL,
 	content TEXT NOT NULL,
-	userId uuid NOT NULL,
+	userId INT NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (userId) REFERENCES account_management(id)
-);"
+);";
+
+mysqli_query($conn, $product_table);
