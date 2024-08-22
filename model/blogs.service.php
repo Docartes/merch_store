@@ -1,7 +1,7 @@
 <?php  
 include 'connection/connection.php';
 
-function check_duplicate($blog_title) {
+function check_duplicate_blogs($blog_title) {
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM blogs");
@@ -30,7 +30,7 @@ function insertBlogs($title, $content, $userId) {
 
 	$query = "INSERT INTO blogs (title, content, userId) VALUES ('$title', '$content', '$userId')";
 
-	if ( check_duplicate($title) == true ) {
+	if ( check_duplicate_blogs($title) == true ) {
 		return 'Blog sudah terdaftar';
 	}
 

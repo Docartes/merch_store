@@ -2,7 +2,7 @@
  
 include 'connection/connection.php';
 
-function check_duplicate($category_name) {
+function check_duplicate_category($category_name) {
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM category");
@@ -44,7 +44,7 @@ function insertCategory($category_name) {
 		return 'Masukkan nama yang valid';
 	}
 
-	if ( check_duplicate($category_name) == true ) {
+	if ( check_duplicate_category($category_name) == true ) {
 		return "Kategori sudah ada";
 	}
 

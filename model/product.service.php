@@ -2,7 +2,7 @@
  
 include 'connection/connection.php';
 
-function check_duplicate($product_name) {
+function check_duplicate_product($product_name) {
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM products");
@@ -42,7 +42,7 @@ function insertProducts($name, $images, $price, $quantity_in_stock, $categoryId)
 
 	$query = "INSERT INTO products (name, images, price, quantity_in_stock, categoryId) VALUES ('$name', '$images', $price, $quantity_in_stock, '$categoryId')";
 
-	if ( check_duplicate($name) == true ) {
+	if ( check_duplicate_product($name) == true ) {
 		return "Produk sudah terdaftar";
 	}
 

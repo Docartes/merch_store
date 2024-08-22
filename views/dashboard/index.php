@@ -41,8 +41,8 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
             <nav id="sidebar" class="col-md-3">
                 <div class="list-group">
                     <a href="#products" class="list-group-item list-group-item-action" data-toggle="collapse">Products</a>
-                    <!-- <a href="#orders" class="list-group-item list-group-item-action" data-toggle="collapse">Orders</a>
-                    <a href="#orderItems" class="list-group-item list-group-item-action" data-toggle="collapse">Order Items</a> -->
+                    <a href="#category" class="list-group-item list-group-item-action" data-toggle="collapse">Category</a>
+                    <!-- <a href="#orderItems" class="list-group-item list-group-item-action" data-toggle="collapse">Order Items</a> -->
                 </div>
             </nav>
 
@@ -62,7 +62,7 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                 </div>
                                 <div class="form-group">
                                     <label for="productName">Product Image</label>
-                                    <input type="text" class="form-control" name="productImage" id="productName" placeholder="Enter product image">
+                                    <input type="text" class="form-control" name="productImage" id="productName" placeholder="Enter product image (link)">
                                 </div>
                                 <div class="form-group">
                                     <label for="productPrice">Product Price</label>
@@ -80,7 +80,6 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                             </form>
                             <hr>
                             <!-- Product List -->
-                            <?php include "../../controllers/product.controller.php"; ?>
                             <h5>Product List</h5>
                             <table class="table table-striped">
                                 <thead>
@@ -92,7 +91,7 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-
+                                <?php include_once "../../controllers/product.controller.php"; ?>
                                 <tbody>
                                 	<?php while ( $row = mysqli_fetch_assoc($data) ): ?>
                                     <!-- Example Row -->
@@ -115,46 +114,44 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                 </div>
 
                 <!-- Orders Section -->
-                <div id="orders" class="collapse">
+                <div id="category" class="my-4 collapse show">
                     <div class="card">
-                        <div class="card-header">Orders</div>
+                        <div class="card-header">Category</div>
                         <div class="card-body">
                             <!-- Add Order Form -->
-                            <h5>Add Order</h5>
+                            <h5>Add Category</h5>
                             <form>
                                 <div class="form-group">
-                                    <label for="orderCustomer">Customer Name</label>
-                                    <input type="text" class="form-control" id="orderCustomer" placeholder="Enter customer name">
+                                    <label for="orderCustomer">Category Name</label>
+                                    <input type="text" class="form-control" id="orderCustomer" placeholder="Enter category name">
                                 </div>
-                                <div class="form-group">
-                                    <label for="orderDate">Order Date</label>
-                                    <input type="date" class="form-control" id="orderDate">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Add Order</button>
+                                <button type="submit" class="btn btn-primary mt-4">Add Category</button>
                             </form>
                             <hr>
                             <!-- Order List -->
+                            
                             <h5>Order List</h5>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Customer</th>
-                                        <th>Date</th>
+                                        <th>Category Name</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
+                                <?php include_once "../../controllers/category.controller.php"; ?>
                                 <tbody>
                                     <!-- Example Row -->
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Customer 1</td>
-                                        <td>2024-08-22</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm">Edit</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
-                                        </td>
-                                    </tr>
+                                    <?php while($row = mysqli_fetch_assoc($data)): ?>
+                                        <tr>
+                                            <td><?php echo $row['id']; ?></td>
+                                            <td><?php echo $row['name']; ?></td>
+                                            <td>
+                                                <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
                                     <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
