@@ -11,7 +11,7 @@ if ( isset($_POST['productName']) ) {
 	$image = htmlspecialchars($_POST['productImage']);
 	$price = (int)$_POST['productPrice'];
 	$stok = (int)$_POST['stok'];
-	$categoryId = (int)$_POST['category'];
+	$categoryId = $_POST['category'];
 
 
 	insertProducts($name, $image, $price, $stok, $categoryId);

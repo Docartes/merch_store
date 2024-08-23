@@ -35,25 +35,6 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
 	<?php if ( isset($login) !== true ): ?>
 		<?php echo $navbar['not_login']; ?>
 	<?php endif; ?>
-	
-
-	<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Cart</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">
-
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Hero Section -->
-
 		
 
 		<div class="untree_co-section before-footer-section">

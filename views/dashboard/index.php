@@ -58,23 +58,23 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                             <form action="../../controllers/product.controller.php" method="post">
                                 <div class="form-group">
                                     <label for="productName">Product Name</label>
-                                    <input type="text" name="productName" class="form-control" id="productName" placeholder="Enter product name">
+                                    <input type="text" name="productName" class="form-control" id="productName" placeholder="Enter product name" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="productName">Product Image</label>
-                                    <input type="text" class="form-control" name="productImage" id="productName" placeholder="Enter product image (link)">
+                                    <input type="text" class="form-control" name="productImage" id="productName" placeholder="Enter product image (link)" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="productPrice">Product Price</label>
-                                    <input type="number" class="form-control" name="productPrice" id="productPrice" placeholder="Enter product price">
+                                    <input type="number" class="form-control" name="productPrice" id="productPrice" placeholder="Enter product price" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="productPrice">Stok</label>
-                                    <input type="number" class="form-control" name="stok" id="productPrice" placeholder="Enter product stok">
+                                    <input type="number" class="form-control" name="stok" id="productPrice" placeholder="Enter product stok" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="productPrice">Category Id</label>
-                                    <input type="number" class="form-control" name="category" id="productPrice" placeholder="Enter category id">
+                                    <input type="text" class="form-control" name="category" id="productPrice" placeholder="Enter category id" autocomplete="off">
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-4">Add Product</button>
                             </form>
@@ -120,10 +120,10 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                         <div class="card-body">
                             <!-- Add Order Form -->
                             <h5>Add Category</h5>
-                            <form>
+                            <form action="../../controllers/category.controller.php" method="post">
                                 <div class="form-group">
                                     <label for="orderCustomer">Category Name</label>
-                                    <input type="text" class="form-control" id="orderCustomer" placeholder="Enter category name">
+                                    <input type="text" class="form-control" id="orderCustomer" placeholder="Enter category name" autocomplete="off" name="name">
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-4">Add Category</button>
                             </form>
@@ -148,7 +148,7 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                             <td><?php echo $row['name']; ?></td>
                                             <td>
                                                 <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="../category/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
