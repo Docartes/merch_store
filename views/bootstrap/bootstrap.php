@@ -24,7 +24,7 @@ $navbar = [
       <div class="navbar-nav" style="margin-left: auto;">
         <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
         <a class="nav-link" href="../cart/">Cart</a>
-        <a class="nav-link" href="#">Shop</a>
+        <a class="nav-link" href="../shop">Shop</a>
         <a class="nav-link" href="../auth_views/login.php">Login</a>
         <a class="nav-link" href="../auth_views/register.php">Register</a>
       </div>
@@ -42,7 +42,7 @@ $navbar = [
       <div class="navbar-nav" style="margin-left: auto;">
         <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
         <a class="nav-link" href="../cart">Cart</a>
-        <a class="nav-link" href="#">Shop</a>
+        <a class="nav-link" href="../shop">Shop</a>
         <a class="nav-link" href="../profile"><i class="bi bi-person-circle"></i></a>
       </div>
     </div>
@@ -59,7 +59,7 @@ $navbar = [
       <div class="navbar-nav" style="margin-left: auto;">
         <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
         <a class="nav-link" href="../cart">Cart</a>
-        <a class="nav-link" href="#">Shop</a>
+        <a class="nav-link" href="../shop">Shop</a>
         <a class="nav-link" href="../dashboard">Dashboard</a>
         <a class="nav-link" href="../profile"><i class="bi bi-person-circle"></i></a>
       </div>
