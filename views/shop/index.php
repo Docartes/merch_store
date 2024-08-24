@@ -3,15 +3,23 @@
 session_start();
 
 include "../bootstrap/bootstrap.php";
-
+include "../../controllers/product.controller.php";
 
 if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {	
 	$login = $_SESSION['login'];
 	$user_data = $_SESSION['data_login'];
 }
 
+if ( isset($_GET['id']) ) {
+	$rawData = getProductByCategory($_GET['id']);
+} else if ( !isset($_GET['id']) ) {
+	$rawData = readProducts();
+}
+
+ 
+
 function formatRupiah($number) {
-    return 'Rp ' . number_format($number, 0, ',', '.');
+    return 'Rp' . number_format($number, 0, ',', '.');
 }
 
 ?>
@@ -38,10 +46,20 @@ function formatRupiah($number) {
 		<?php echo $navbar['not_login']; ?>
 	<?php endif; ?>
 
+	
+	<?php include "../../controllers/category.controller.php"; ?>
+	<div class="container mt-4">
+		<div class="flex">
+			<?php while ( $row = mysqli_fetch_assoc($data) ): ?>
+				<a href="index.php?id=<?php echo $row['id']; ?>" class="btn btn-primary"><?php echo $row['name']; ?></a>
+			<?php endwhile; ?>
+		</div>
+	</div>
+
 	<div class="untree_co-section product-section before-footer-section">
 		  <div class="container">
 		      	<div class="row">
-		      		<?php include "../../controllers/product.controller.php"; ?>
+		      		<?php $data = $rawData; ?>
 		      		<?php while ( $row = mysqli_fetch_assoc($data) ): ?>
 								<div class="col-12 col-md-4 col-lg-3 mb-5">
 									<a class="product-item" href="../cart/index.php?id=<?php echo $row['id']; ?>">

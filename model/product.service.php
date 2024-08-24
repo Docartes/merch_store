@@ -27,6 +27,16 @@ function readProducts() {
 	return $data;
 }
 
+function getProductByCategory($categoryId) {
+	global $conn;
+
+	$query = "SELECT * FROM products WHERE categoryId = '$categoryId'";
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
 function getProductById($id) {
 	global $conn;
 

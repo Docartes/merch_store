@@ -2,9 +2,8 @@
 
 $root_dir = dirname(__DIR__);
 
-include $root_dir . "/model/product.service.php";
+include $root_dir . "/model/product.service.php"; 
 
-$data = readProducts();
 
 if ( isset($_POST['productName']) ) {
 	$name = htmlspecialchars($_POST['productName']);
