@@ -92,6 +92,7 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                     </tr>
                                 </thead>
                                 <?php include_once "../../controllers/product.controller.php"; ?>
+                                <?php $data = readProducts(); ?>
                                 <tbody>
                                 	<?php while ( $row = mysqli_fetch_assoc($data) ): ?>
                                     <!-- Example Row -->
@@ -101,8 +102,8 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                         <td><?php echo $row['quantity_in_stock']; ?></td>
                                         <td><?php echo $row['price']; ?></td>
                                         <td>
-                                            <a href="../products/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="../products/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="../products/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="../products/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                                         </td>
                                     </tr>
                                    <?php endwhile; ?>
@@ -147,8 +148,8 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['name']; ?></td>
                                             <td>
-                                                <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="../category/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="../category/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
