@@ -76,8 +76,8 @@ function formatRupiah($number) {
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $orderItemData = readOrderItem(); ?>
-                        <?php while ( $row = mysqli_fetch_assoc($orderItemData) ): ?>
+                        <?php $orderItem = getOrderItemById($user_data['id']); ?>
+                        <?php while ( $row = mysqli_fetch_assoc($orderItem) ): ?>
                           <?php $rawDataProduct = getProductById($row['productId']); ?>
                           <?php $dataProduct = mysqli_fetch_assoc($rawDataProduct) ?>
                           <tr>
@@ -128,7 +128,7 @@ function formatRupiah($number) {
 
                 <?php
                   $total = 0;
-                  $rawData = readOrderItem();
+                  $rawData = getOrderItemById($user_data['id']);
                   while ( $row = mysqli_fetch_assoc($rawData) ) {
                     $total += (int)$row['totalPrice'];
                   }

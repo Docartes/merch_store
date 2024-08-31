@@ -12,10 +12,10 @@ function readOrderItem() {
 	return $data;
 }
 
-function getOrderItemById($id) {
+function getOrderItemById($userId) {
 	global $conn;
 
-	$query = "SELECT * FROM orderItem WHERE id = '$id'";
+	$query = "SELECT * FROM orderItem WHERE userId = '$userId'";
 
 	$data = mysqli_query($conn, $query);
 
