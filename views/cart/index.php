@@ -14,8 +14,12 @@ if ( isset($_GET['id']) ) {
   $data = getProductById($_GET['id']);
 
   $row = mysqli_fetch_assoc($data);
-  insertOrderItem($row['id'], (int)$row['price'], 1, $user_data['id']);
-  header("Location: index.php");
+  if ( $user_data['id'] ) {
+    insertOrderItem($row['id'], (int)$row['price'], 1, $user_data['id']);
+    header("Location: index.php");
+  }
+
+  $err_msg = "You must login or register first";
 }
 
 if ( isset($_GET['remove']) ) {
@@ -58,9 +62,13 @@ function formatRupiah($number) {
 	<?php endif; ?>
 		
 
+
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
+                <?php if ( $err_msg ): ?>
+                  <h5 class="text-center text-danger pb-4"><?php echo $err_msg; ?></h5>
+                <?php endif; ?>
                 <form class="col-md-12" method="post" action="">
                   <div class="site-blocks-table">
                     <table class="table">

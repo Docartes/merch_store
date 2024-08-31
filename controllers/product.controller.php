@@ -16,6 +16,3 @@ if ( isset($_POST['productName']) ) {
 	insertProducts($name, $image, $price, $stok, $categoryId);
 	header("Location: ../views/dashboard");
 }
-
-
-

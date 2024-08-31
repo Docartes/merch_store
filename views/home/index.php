@@ -2,12 +2,16 @@
 
 session_start();
 
+
+
 if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {	
 	$login = $_SESSION['login'];
 	$user_data = $_SESSION['data_login'];
 }
 
-
+function formatRupiah($number) {
+    return 'Rp' . number_format($number, 0, ',', '.');
+}
 
 ?>
 
@@ -139,48 +143,28 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
 		<!-- End We Help Section -->
 
 		<!-- Start Popular Product -->
+		<?php include "../../controllers/product.controller.php"; ?>
 		<div class="popular-product">
 			<div class="container">
 				<div class="row">
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-1.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Nordic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-2.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Kruzo Aero Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
+					
+					<?php $rawData = getProductsByLimit(3); ?>
+					<?php while ( $row = mysqli_fetch_assoc($rawData) ): ?>
+						<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+							<div class="product-item-sm d-flex">
+								<div class="thumbnail">
+									<img src="<?php echo $row['images'] ?>" alt="Image" class="img-fluid">
+								</div>
+								<div class="pt-3">
+									<h3><?php echo $row['name'] ?></h3>
+									<p><?php echo formatRupiah((int)$row['price']) ?></p>
+									<a href="../shop">Shop Now</a>
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endwhile; ?>
 
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-3.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Ergonomic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
+					
 
 				</div>
 			</div>
@@ -259,7 +243,7 @@ if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Ahya adalah kreatif di balik semua konten yang ada di website. Dengan pengalaman di penulisan dan strategi konten, Ahya mengembangkan teks yang menarik dan relevan untuk audiens target. Dia melakukan riset untuk memastikan konten yang dihasilkan SEO-friendly dan sesuai dengan strategi pemasaran klien. Ahya juga bekerja sama dengan Alex dan Said untuk memastikan bahwa konten disajikan dengan cara yang menarik dan mudah diakses di seluruh website.&rdquo;</p>
+													<p>&ldquo;Ahya adalah kreatif di balik semua konten yang ada di website. Dengan pengalaman di penulisan dan strategi konten, Ahya mengembangkan teks yang menarik dan relevan untuk audiens target. Dia melakukan riset untuk memastikan konten yang dihasilkan SEO-friendly dan sesuai dengan strategi pemasaran klien. Ahya juga bekerja sama dengan Agung dan Said untuk memastikan bahwa konten disajikan dengan cara yang menarik dan mudah diakses di seluruh website.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">

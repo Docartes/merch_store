@@ -16,6 +16,16 @@ function check_duplicate_product($product_name) {
 	return false;
 }
 
+function getProductsByLimit($limit) {
+	global $conn;
+
+	$query = "SELECT * FROM products LIMIT 3";
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
 
 function readProducts() {
 	global $conn;
