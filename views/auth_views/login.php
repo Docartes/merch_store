@@ -5,7 +5,11 @@ session_start();
 include "../bootstrap/bootstrap.php";
 
 if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {
+<<<<<<< HEAD
 	$error_message = $_SESSION['error'];
+=======
+	// $error_message = $_SESSION['error'];
+>>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
 	$failed_message = $_SESSION['failed'];	
 }
 

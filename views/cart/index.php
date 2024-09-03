@@ -69,7 +69,11 @@ function formatRupiah($number)
   <div class="untree_co-section before-footer-section">
     <div class="container">
       <div class="row mb-5">
+<<<<<<< HEAD
         <?php if ($err_msg): ?>
+=======
+        <?php if (isset($err_msg)): ?>
+>>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
           <h5 class="text-center text-danger pb-4"><?php echo $err_msg; ?></h5>
         <?php endif; ?>
         <form class="col-md-12" method="post" action="">
@@ -86,6 +90,7 @@ function formatRupiah($number)
                   <th class="product-update">Update</th>
                 </tr>
               </thead>
+<<<<<<< HEAD
               <tbody>
                 <?php $orderItem = getOrderItemById($user_data['id']); ?>
                 <?php while ($row = mysqli_fetch_assoc($orderItem)): ?>
@@ -127,6 +132,52 @@ function formatRupiah($number)
                   </tr>
                 <?php endwhile; ?>
               </tbody>
+=======
+              <?php if (isset($user_data)): ?>
+                <tbody>
+
+                  <?php $orderItem = getOrderItemById($user_data['id']); ?>
+                  <?php while ($row = mysqli_fetch_assoc($orderItem)): ?>
+                    <?php $rawDataProduct = getProductById($row['productId']); ?>
+                    <?php $dataProduct = mysqli_fetch_assoc($rawDataProduct) ?>
+                    <tr>
+                      <input type="text" name="id" hidden value="<?php echo $row['id']; ?>">
+                      <input type="text" name="unitPrice" hidden value="<?php echo $row['unitPrice']; ?>">
+                      <input type="text" name="userId" hidden value="<?php echo $row['userId']; ?>">
+                      <input type="text" name="productId" hidden value="<?php echo $row['productId']; ?>">
+                      <td class="product-thumbnail">
+                        <img src="<?php echo $dataProduct['images'] ?>" alt="Image" class="img-fluid">
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black"><?php echo $dataProduct['name'] ?></h2>
+                      </td>
+                      <td><?php echo formatRupiah((int) $dataProduct['price']) ?></td>
+                      <td>
+
+                        <div class="input-group mb-3 d-flex align-items-center quantity-container"
+                          style="max-width: 120px;">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                          </div>
+                          <input type="text" name="quantity" class="form-control text-center quantity-amount"
+                            value="<?php echo $row['quantity'] ?>" placeholder=""
+                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                          </div>
+                        </div>
+
+
+                      </td>
+                      <td><?php echo formatRupiah((int) $row['totalPrice']); ?></td>
+                      <td><a href="index.php?remove=<?php echo $row['id']; ?>" class="btn btn-black btn-sm">X</a></td>
+                      <td><button type="submit" class="btn btn-black btn-sm"><i class="bi bi-pencil-square"></i></button>
+                      </td>
+                    </tr>
+                  <?php endwhile; ?>
+                </tbody>
+              <?php endif; ?>
+>>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
             </table>
           </div>
         </form>
@@ -144,6 +195,7 @@ function formatRupiah($number)
 
         <?php
         $total = 0;
+<<<<<<< HEAD
         $rawData = getOrderItemById($user_data['id']);
         while ($row = mysqli_fetch_assoc($rawData)) {
           $total += (int) $row['totalPrice'];
@@ -151,6 +203,17 @@ function formatRupiah($number)
 
         // is_array($orderItemData);
         ?>
+=======
+        if (isset($user_data)) {
+          $rawData = getOrderItemById($user_data['id']);
+          while ($row = mysqli_fetch_assoc($rawData)) {
+            $total += (int) $row['totalPrice'];
+          }
+        }
+
+        ?>
+
+>>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
         <div class="col-md-6 pl-5">
           <div class="row justify-content-end">
             <div class="col-md-7">
