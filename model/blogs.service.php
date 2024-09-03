@@ -2,7 +2,9 @@
 $root_dir = dirname(__DIR__);
 
 include 'connection/connection.php';
-include_once $root_dir . './utils/uuid.php';
+include_once $root_dir . './../utils/uuid.php';
+
+
 function check_duplicate_blogs($blog_title)
 {
 	global $conn;
@@ -29,11 +31,11 @@ function readBlogs()
 	return $data;
 }
 
-function insertBlogs($title, $content, $userId)
+function insertBlogs($title, $image, $content, $userId)
 {
 	global $conn;
 	$id = generateUuid();
-	$query = "INSERT INTO blogs (id, title, content, userId) VALUES ('$id', '$title', '$content', '$userId')";
+	$query = "INSERT INTO blogs (id, image, title, content, userId) VALUES ('$id', '$image', '$title', '$content', '$userId')";
 
 	if (check_duplicate_blogs($title) == true) {
 		return 'Blog sudah terdaftar';
