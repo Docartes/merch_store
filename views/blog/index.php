@@ -44,7 +44,7 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 							<div class="post-entry">
 								<a href="#" class="post-thumbnail"><img src="<?php echo $row['image'] ?>" alt="Image" class="img-fluid"></a>
 								<div class="post-content-entry">
-									<h3><a href="#"><?php echo $row['title']; ?></a></h3>
+									<h3><a href="detail.php?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></h3>
 									<div class="meta">
 										<?php $formatDate = date('M d, Y', strtotime($row['created_at'])); ?>
 										<span>by <a href="#">Admin</a></span> <span>on <a href="#"><?php echo $formatDate; ?></a></span>

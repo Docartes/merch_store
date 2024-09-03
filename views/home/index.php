@@ -302,7 +302,7 @@ function formatRupiah($number)
 					<h2 class="section-title">Recent Blog</h2>
 				</div>
 				<div class="col-md-6 text-start text-md-end">
-					<a href="/blog" class="more">View All Posts</a>
+					<a href="../blog" class="more">View All Posts</a>
 				</div>
 			</div>
 
@@ -312,7 +312,7 @@ function formatRupiah($number)
 				<?php while ( $row = mysqli_fetch_assoc($limitData) ): ?>
 					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="../images/post-1.jpg" alt="Image" class="img-fluid"></a>
+							<a href="#" class="post-thumbnail"><img src="<?php echo $row['image'] ?>" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
 								<h3><a href="#"><?php echo $row['title']; ?></a></h3>
 								<div class="meta">
