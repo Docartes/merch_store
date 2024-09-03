@@ -1,13 +1,16 @@
-<?php  
-include 'connection/connection.php';
+<?php
+$root_dir = dirname(__DIR__);
 
-function check_duplicate_blogs($blog_title) {
+include 'connection/connection.php';
+include_once $root_dir . './utils/uuid.php';
+function check_duplicate_blogs($blog_title)
+{
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM blogs");
 
-	while ( $row = mysqli_fetch_assoc($data) ) {
-		if ( $row['title'] == htmlentities($blog_title) ) {
+	while ($row = mysqli_fetch_assoc($data)) {
+		if ($row['title'] == htmlentities($blog_title)) {
 			return true;
 		}
 	}
@@ -15,7 +18,8 @@ function check_duplicate_blogs($blog_title) {
 	return false;
 }
 
-function readBlogs() {
+function readBlogs()
+{
 	global $conn;
 
 	$query = "SELECT * FROM blogs";
@@ -25,19 +29,21 @@ function readBlogs() {
 	return $data;
 }
 
-function insertBlogs($title, $content, $userId) {
+function insertBlogs($title, $content, $userId)
+{
 	global $conn;
+	$id = generateUuid();
+	$query = "INSERT INTO blogs (id, title, content, userId) VALUES ('$id', '$title', '$content', '$userId')";
 
-	$query = "INSERT INTO blogs (title, content, userId) VALUES ('$title', '$content', '$userId')";
-
-	if ( check_duplicate_blogs($title) == true ) {
+	if (check_duplicate_blogs($title) == true) {
 		return 'Blog sudah terdaftar';
 	}
 
 	return mysqli_query($conn, $query);
 }
 
-function updateBlogs($id, $title, $content,$userId) {
+function updateBlogs($id, $title, $content, $userId)
+{
 	global $conn;
 
 	$query = "UPDATE blogs SET title = '$title', content = '$content', userId = '$userId' WHERE id = '$id'";
@@ -45,7 +51,8 @@ function updateBlogs($id, $title, $content,$userId) {
 	return mysqli_query($conn, $query);
 }
 
-function deleteBogs($id) {
+function deleteBogs($id)
+{
 	global $conn;
 
 	$query = "DELETE FROM blogs WHERE id = '$id'";
