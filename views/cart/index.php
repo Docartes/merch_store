@@ -69,11 +69,7 @@ function formatRupiah($number)
   <div class="untree_co-section before-footer-section">
     <div class="container">
       <div class="row mb-5">
-<<<<<<< HEAD
-        <?php if ($err_msg): ?>
-=======
         <?php if (isset($err_msg)): ?>
->>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
           <h5 class="text-center text-danger pb-4"><?php echo $err_msg; ?></h5>
         <?php endif; ?>
         <form class="col-md-12" method="post" action="">
@@ -90,7 +86,6 @@ function formatRupiah($number)
                   <th class="product-update">Update</th>
                 </tr>
               </thead>
-<<<<<<< HEAD
               <tbody>
                 <?php $orderItem = getOrderItemById($user_data['id']); ?>
                 <?php while ($row = mysqli_fetch_assoc($orderItem)): ?>
@@ -132,8 +127,6 @@ function formatRupiah($number)
                   </tr>
                 <?php endwhile; ?>
               </tbody>
-=======
-              <?php if (isset($user_data)): ?>
                 <tbody>
 
                   <?php $orderItem = getOrderItemById($user_data['id']); ?>
@@ -176,8 +169,6 @@ function formatRupiah($number)
                     </tr>
                   <?php endwhile; ?>
                 </tbody>
-              <?php endif; ?>
->>>>>>> 31894f1fb223370b881ea15b8fbeef825ab56912
             </table>
           </div>
         </form>
