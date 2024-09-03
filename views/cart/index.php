@@ -129,48 +129,6 @@ function formatRupiah($number)
                   <?php endwhile; ?>
                 </tbody>
               <?php endif ?>
-              <tbody>
-
-                <?php $orderItem = getOrderItemById($user_data['id']); ?>
-                <?php while ($row = mysqli_fetch_assoc($orderItem)): ?>
-                  <?php $rawDataProduct = getProductById($row['productId']); ?>
-                  <?php $dataProduct = mysqli_fetch_assoc($rawDataProduct) ?>
-                  <tr>
-                    <input type="text" name="id" hidden value="<?php echo $row['id']; ?>">
-                    <input type="text" name="unitPrice" hidden value="<?php echo $row['unitPrice']; ?>">
-                    <input type="text" name="userId" hidden value="<?php echo $row['userId']; ?>">
-                    <input type="text" name="productId" hidden value="<?php echo $row['productId']; ?>">
-                    <td class="product-thumbnail">
-                      <img src="<?php echo $dataProduct['images'] ?>" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black"><?php echo $dataProduct['name'] ?></h2>
-                    </td>
-                    <td><?php echo formatRupiah((int) $dataProduct['price']) ?></td>
-                    <td>
-
-                      <div class="input-group mb-3 d-flex align-items-center quantity-container"
-                        style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                        </div>
-                        <input type="text" name="quantity" class="form-control text-center quantity-amount"
-                          value="<?php echo $row['quantity'] ?>" placeholder=""
-                          aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                        </div>
-                      </div>
-
-
-                    </td>
-                    <td><?php echo formatRupiah((int) $row['totalPrice']); ?></td>
-                    <td><a href="index.php?remove=<?php echo $row['id']; ?>" class="btn btn-black btn-sm">X</a></td>
-                    <td><button type="submit" class="btn btn-black btn-sm"><i class="bi bi-pencil-square"></i></button>
-                    </td>
-                  </tr>
-                <?php endwhile; ?>
-              </tbody>
             </table>
           </div>
         </form>
