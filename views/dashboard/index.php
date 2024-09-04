@@ -44,6 +44,7 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 				<div class="list-group">
 					<a href="#products" class="list-group-item list-group-item-action" data-toggle="collapse">Products</a>
 					<a href="#category" class="list-group-item list-group-item-action" data-toggle="collapse">Category</a>
+					<a href="#blog" class="list-group-item list-group-item-action" data-toggle="collapse">Blogs</a>
 					<!-- <a href="#orderItems" class="list-group-item list-group-item-action" data-toggle="collapse">Order Items</a> -->
 				</div>
 			</nav>
@@ -141,7 +142,7 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 							<hr>
 							<!-- Order List -->
 
-							<h5>Order List</h5>
+							<h5>Category List</h5>
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -219,6 +220,67 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 											<button class="btn btn-danger btn-sm">Delete</button>
 										</td>
 									</tr>
+									<!-- Add more rows as needed -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div id="blog" class="my-4 collapse show">
+					<div class="card">
+						<div class="card-header">Blogs</div>
+						<div class="card-body">
+							<!-- Add Order Form -->
+							<h5>Add Blog</h5>
+							<form action="../../controllers/blog.controller.php" method="post">
+								<div class="form-group">
+									<label for="title">Blog Title</label>
+									<input type="text" class="form-control" id="title" placeholder="Enter blog title"
+										autocomplete="off" name="title">
+								</div>
+								<div class="form-group">
+									<label for="image">Blog Image</label>
+									<input type="text" class="form-control" id="image" placeholder="Enter blog image (link)"
+										autocomplete="off" name="image">
+								</div>
+								<div class="form-group">
+									<label for="content">Blog Content</label>
+									<textarea name="content" id="content" class="form-control"></textarea>
+								</div>
+								<input type="hidden" name="userId" value="<?php echo $user_data['id']; ?>">
+								<button type="submit" class="btn btn-primary mt-4">Add Blog</button>
+							</form>
+							<hr>
+							<!-- Order List -->
+
+							<h5>Blogs List</h5>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Title</th>
+										<th>Content</th>
+									</tr>
+								</thead>
+								<?php include_once "../../controllers/blog.controller.php"; ?>
+								<?php $blog = readBlogs(); ?>
+								<tbody>
+									<!-- Example Row -->
+
+									<?php while ($row = mysqli_fetch_assoc($blog)): ?>
+											<tr>
+												<td><?php echo $row['id']; ?></td>
+												<td><?php echo $row['title']; ?></td>
+												<td><?php echo $row['content']; ?></td>
+												<td>
+													<a href="../blog/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
+															class="bi bi-pencil-square"></i></a>
+													<a href="../blog/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
+															class="bi bi-trash"></i></a>
+												</td>
+											</tr>
+									<?php endwhile; ?>
 									<!-- Add more rows as needed -->
 								</tbody>
 							</table>

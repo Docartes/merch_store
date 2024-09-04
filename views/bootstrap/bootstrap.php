@@ -22,11 +22,12 @@ $navbar = [
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" style="margin-left: auto;">
-        <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
-        <a class="nav-link" href="../cart/">Cart</a>
-        <a class="nav-link" href="../shop">Shop</a>
-        <a class="nav-link" href="../auth_views/login.php">Login</a>
-        <a class="nav-link" href="../auth_views/register.php">Register</a>
+        <a class="nav-link active px-4" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
+        <a class="nav-link px-4" href="../shop">Shop</a>
+        <a class="nav-link px-4" href="../blog">Blog</a>
+        <a class="nav-link px-4" href="../auth_views/login.php">Login</a>
+        <a class="nav-link px-4" href="../auth_views/register.php">Register</a>
+        <a class="nav-link px-4" href="../cart/"><img src="../images/cart.svg"></a>
       </div>
     </div>
   </div>
@@ -40,10 +41,11 @@ $navbar = [
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" style="margin-left: auto;">
-        <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
-        <a class="nav-link" href="../cart">Cart</a>
-        <a class="nav-link" href="../shop">Shop</a>
-        <a class="nav-link" href="../profile"><i class="bi bi-person-circle"></i></a>
+        <a class="nav-link active px-4" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
+        <a class="nav-link px-4" href="../blog">Blogs</a>
+        <a class="nav-link px-4" href="../shop">Shop</a>
+        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
+        <a class="nav-link px-4" href="../cart/"><img src="../images/cart.svg"></a>
       </div>
     </div>
   </div>
@@ -57,11 +59,12 @@ $navbar = [
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" style="margin-left: auto;">
-        <a class="nav-link active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
-        <a class="nav-link" href="../cart">Cart</a>
-        <a class="nav-link" href="../shop">Shop</a>
-        <a class="nav-link" href="../dashboard">Dashboard</a>
-        <a class="nav-link" href="../profile"><i class="bi bi-person-circle"></i></a>
+        <a class="nav-link px-4 active" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
+        <a class="nav-link px-4" href="../blog">Blogs</a>
+        <a class="nav-link px-4" href="../shop">Shop</a>
+        <a class="nav-link px-4" href="../dashboard">Dashboard</a>
+        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
+        <a class="nav-link px-4" href="../cart/"><img src="../images/cart.svg"></a>
       </div>
     </div>
   </div>
