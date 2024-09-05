@@ -44,8 +44,8 @@ $navbar = [
         <a class="nav-link active px-4" aria-current="page" href="http://' . $server_name . '/merch_store/views/home">Home</a>
         <a class="nav-link px-4" href="../blog">Blogs</a>
         <a class="nav-link px-4" href="../shop">Shop</a>
-        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
         <a class="nav-link px-4" href="../cart/"><img src="../images/cart.svg"></a>
+        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
       </div>
     </div>
   </div>
@@ -63,8 +63,8 @@ $navbar = [
         <a class="nav-link px-4" href="../blog">Blogs</a>
         <a class="nav-link px-4" href="../shop">Shop</a>
         <a class="nav-link px-4" href="../dashboard">Dashboard</a>
-        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
         <a class="nav-link px-4" href="../cart/"><img src="../images/cart.svg"></a>
+        <a class="nav-link px-4" href="../profile"><img src="../images/user.svg"></a>
       </div>
     </div>
   </div>
