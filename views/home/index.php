@@ -2,16 +2,12 @@
 
 session_start();
 
-
+include_once '../../utils/format_rupiah.php';
+include_once '../../utils/format_date.php';
 
 if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 	$login = $_SESSION['login'];
 	$user_data = $_SESSION['data_login'];
-}
-
-function formatRupiah($number)
-{
-	return 'Rp' . number_format($number, 0, ',', '.');
 }
 
 ?>
@@ -309,15 +305,14 @@ function formatRupiah($number)
 			<div class="row">
 				<?php include_once "../../controllers/blog.controller.php"; ?>
 				<?php $limitData = getBlogsByLimit(3); ?>
-				<?php while ( $row = mysqli_fetch_assoc($limitData) ): ?>
+				<?php while ($row = mysqli_fetch_assoc($limitData)): ?>
 					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 						<div class="post-entry">
 							<a href="#" class="post-thumbnail"><img src="<?php echo $row['image'] ?>" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
 								<h3><a href="#"><?php echo $row['title']; ?></a></h3>
 								<div class="meta">
-									<?php $fomatDate = date('M d, Y', strtotime($row['created_at'])) ?>
-									<span>by <a href="#">Admin</a></span> <span>on <a href="#"><?php echo $fomatDate ?></a></span>
+									<span>by <a href="#">Admin</a></span> <span>on <a href="#"><?php echo format_date($row['created_at']) ?></a></span>
 								</div>
 							</div>
 						</div>

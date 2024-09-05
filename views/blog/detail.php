@@ -27,7 +27,7 @@ if (!isset($_GET['id'])) {
   <?php echo $css; ?>
 </head>
 
-<body>
+<body style="font-family: Karla">
 
   <?php if (isset($login) && $user_data['role'] == 'user'): ?>
     <?php echo $navbar['login_user']; ?>

@@ -1,24 +1,24 @@
-<?php  
+<?php
 
 session_start();
 
 include '../bootstrap/bootstrap.php';
 include_once '../../controllers/blog.controller.php';
-if ( isset($_SESSION['login']) || isset($_SESSION['data_login']) ) {    
-  $login = $_SESSION['login'];
-	$user_data = $_SESSION['data_login'];
+if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
+    $login = $_SESSION['login'];
+    $user_data = $_SESSION['data_login'];
 }
 
-if ( isset($_POST['title']) ) {
-	$id = htmlspecialchars($_POST['id']);
-	$image = htmlspecialchars($_POST['image']);
-	$title = htmlspecialchars($_POST['title']);
-	$content = htmlspecialchars($_POST['content']);
-	$userId = htmlspecialchars($_POST['userId']);
+if (isset($_POST['title'])) {
+    $id = htmlspecialchars($_POST['id']);
+    $image = htmlspecialchars($_POST['image']);
+    $title = htmlspecialchars($_POST['title']);
+    $content = htmlspecialchars($_POST['content']);
+    $userId = htmlspecialchars($_POST['userId']);
 
-	updateBlogs($id, $image, $title, $content, $userId);
+    updateBlogs($id, $image, $title, $content, $userId);
 
-	header('Location: ../dashboard');
+    header('Location: ../dashboard');
 }
 
 
@@ -26,24 +26,26 @@ if ( isset($_POST['title']) ) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Blog</title>
     <?php echo $css; ?>
 </head>
-<body>
 
-    <?php if ( isset($login) && $user_data['role'] == 'user' ): ?>
+<body style="font-family: Karla">
+
+    <?php if (isset($login) && $user_data['role'] == 'user'): ?>
         <?php echo $navbar['login_user']; ?>
         <?php header("Location: ../home"); ?>
     <?php endif; ?>
 
-    <?php if ( isset($login) && $user_data['role'] == 'admin' ): ?>
+    <?php if (isset($login) && $user_data['role'] == 'admin'): ?>
         <?php echo $navbar['login_admin']; ?>
     <?php endif; ?>
 
-    <?php if ( isset($login) !== true ): ?>
+    <?php if (isset($login) !== true): ?>
         <?php echo $navbar['not_login']; ?>
         <?php header("Location: ../home"); ?>
     <?php endif; ?>
@@ -71,10 +73,10 @@ if ( isset($_POST['title']) ) {
                                 <label for="productName">Blog Title</label>
                                 <input type="text" class="form-control" name="title" id="tile" value="<?php echo $row['title'] ?>">
                             </div>
-                            
+
                             <div class="form-group">
-                            	<label for="blogContent">Blog Content</label>
-                            	<textarea name="content" id="blogContent" class="form-control"><?php echo $row['content'] ?></textarea>
+                                <label for="blogContent">Blog Content</label>
+                                <textarea name="content" id="blogContent" class="form-control"><?php echo $row['content'] ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="productPrice">User Id</label>
@@ -92,4 +94,5 @@ if ( isset($_POST['title']) ) {
     <?php echo $script; ?>
 
 </body>
+
 </html>

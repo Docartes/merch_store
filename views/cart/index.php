@@ -4,13 +4,14 @@ session_start();
 include "../bootstrap/bootstrap.php";
 include "../../controllers/product.controller.php";
 include "../../controllers/orderItem.controller.php";
+include_once '../../utils/format_rupiah.php';
 
 if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
   $login = $_SESSION['login'];
   $user_data = $_SESSION['data_login'];
 }
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && isset($user_data)) {
   $data = getProductById($_GET['id']);
 
   $row = mysqli_fetch_assoc($data);
@@ -18,7 +19,9 @@ if (isset($_GET['id'])) {
     insertOrderItem($row['id'], (int) $row['price'], 1, $user_data['id']);
     header("Location: index.php");
   }
+}
 
+if (!isset($_GET['id']) || !isset($user_data)) {
   $err_msg = "You must login or register first";
 }
 
@@ -31,11 +34,6 @@ if (isset($_POST['quantity'])) {
   updateOrderItem($_POST['id'], $_POST['productId'], (int) $_POST['unitPrice'], $_POST['quantity'], $_POST['userId']);
 }
 
-
-function formatRupiah($number)
-{
-  return 'Rp' . number_format($number, 0, ',', '.');
-}
 
 ?>
 

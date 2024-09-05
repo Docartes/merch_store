@@ -4,6 +4,7 @@ session_start();
 
 include "../bootstrap/bootstrap.php";
 include "../../controllers/product.controller.php";
+include_once '../../utils/format_rupiah.php';
 
 if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 	$login = $_SESSION['login'];
@@ -14,13 +15,6 @@ if (isset($_GET['id'])) {
 	$rawData = getProductByCategory($_GET['id']);
 } else if (!isset($_GET['id'])) {
 	$rawData = readProducts();
-}
-
-
-
-function formatRupiah($number)
-{
-	return 'Rp' . number_format($number, 0, ',', '.');
 }
 
 ?>
