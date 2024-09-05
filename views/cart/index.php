@@ -148,10 +148,11 @@ function formatRupiah($number)
         $total = 0;
         if (isset($user_data)) {
           $rawData = getOrderItemById($user_data['id']);
+          while ($row = mysqli_fetch_assoc($rawData)) {
+            $total += (int) $row['totalPrice'];
+          }
         }
-        while ($row = mysqli_fetch_assoc($rawData)) {
-          $total += (int) $row['totalPrice'];
-        }
+
 
         // is_array($orderItemData);
         ?>
