@@ -9,7 +9,7 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
     $user_data = $_SESSION['data_login'];
 }
 
-if (isset($_POST['title'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id'])) {
     $id = htmlspecialchars($_POST['id']);
     $image = htmlspecialchars($_POST['image']);
     $title = htmlspecialchars($_POST['title']);

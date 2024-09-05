@@ -21,7 +21,7 @@ if (isset($_GET['id']) && isset($user_data)) {
   }
 }
 
-if (!isset($_GET['id']) || !isset($user_data)) {
+if (!isset($user_data)) {
   $err_msg = "You must login or register first";
 }
 

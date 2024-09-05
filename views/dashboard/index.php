@@ -22,19 +22,19 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 	<?php echo $css; ?>
 </head>
 
-<body>
+<body style="font-family: Karla">
 	<?php if (isset($login) && $user_data['role'] == 'user'): ?>
-			<?php echo $navbar['login_user']; ?>
-			<?php header("Location: ../home"); ?>
+		<?php echo $navbar['login_user']; ?>
+		<?php header("Location: ../home"); ?>
 	<?php endif; ?>
 
 	<?php if (isset($login) && $user_data['role'] == 'admin'): ?>
-			<?php echo $navbar['login_admin']; ?>
+		<?php echo $navbar['login_admin']; ?>
 	<?php endif; ?>
 
 	<?php if (isset($login) !== true): ?>
-			<?php echo $navbar['not_login']; ?>
-			<?php header("Location: ../home"); ?>
+		<?php echo $navbar['not_login']; ?>
+		<?php header("Location: ../home"); ?>
 	<?php endif; ?>
 
 	<div class="container mt-4">
@@ -103,19 +103,19 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 								<?php $data = readProducts(); ?>
 								<tbody>
 									<?php while ($row = mysqli_fetch_assoc($data)): ?>
-											<!-- Example Row -->
-											<tr>
-												<td><?php echo $row['id']; ?></td>
-												<td><?php echo $row['name']; ?></td>
-												<td><?php echo $row['quantity_in_stock']; ?></td>
-												<td><?php echo $row['price']; ?></td>
-												<td>
-													<a href="../products/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
-															class="bi bi-pencil-square"></i></a>
-													<a href="../products/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
-															class="bi bi-trash"></i></a>
-												</td>
-											</tr>
+										<!-- Example Row -->
+										<tr>
+											<td><?php echo $row['id']; ?></td>
+											<td><?php echo $row['name']; ?></td>
+											<td><?php echo $row['quantity_in_stock']; ?></td>
+											<td><?php echo $row['price']; ?></td>
+											<td>
+												<a href="../products/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
+														class="bi bi-pencil-square"></i></a>
+												<a href="../products/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
+														class="bi bi-trash"></i></a>
+											</td>
+										</tr>
 									<?php endwhile; ?>
 									<!-- Add more rows as needed -->
 								</tbody>
@@ -155,16 +155,16 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 								<tbody>
 									<!-- Example Row -->
 									<?php while ($row = mysqli_fetch_assoc($data)): ?>
-											<tr>
-												<td><?php echo $row['id']; ?></td>
-												<td><?php echo $row['name']; ?></td>
-												<td>
-													<a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
-															class="bi bi-pencil-square"></i></a>
-													<a href="../category/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
-															class="bi bi-trash"></i></a>
-												</td>
-											</tr>
+										<tr>
+											<td><?php echo $row['id']; ?></td>
+											<td><?php echo $row['name']; ?></td>
+											<td>
+												<a href="../category/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
+														class="bi bi-pencil-square"></i></a>
+												<a href="../category/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
+														class="bi bi-trash"></i></a>
+											</td>
+										</tr>
 									<?php endwhile; ?>
 									<!-- Add more rows as needed -->
 								</tbody>
@@ -269,17 +269,17 @@ if (isset($_SESSION['login']) || isset($_SESSION['data_login'])) {
 									<!-- Example Row -->
 
 									<?php while ($row = mysqli_fetch_assoc($blog)): ?>
-											<tr>
-												<td><?php echo $row['id']; ?></td>
-												<td><?php echo $row['title']; ?></td>
-												<td><?php echo $row['content']; ?></td>
-												<td>
-													<a href="../blog/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
-															class="bi bi-pencil-square"></i></a>
-													<a href="../blog/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
-															class="bi bi-trash"></i></a>
-												</td>
-											</tr>
+										<tr>
+											<td><?php echo $row['id']; ?></td>
+											<td><?php echo $row['title']; ?></td>
+											<td><?php echo $row['content']; ?></td>
+											<td>
+												<a href="../blog/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><i
+														class="bi bi-pencil-square"></i></a>
+												<a href="../blog/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i
+														class="bi bi-trash"></i></a>
+											</td>
+										</tr>
 									<?php endwhile; ?>
 									<!-- Add more rows as needed -->
 								</tbody>
