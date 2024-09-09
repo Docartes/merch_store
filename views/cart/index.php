@@ -32,6 +32,7 @@ if (isset($_GET['remove'])) {
 
 if (isset($_POST['quantity'])) {
   updateOrderItem($_POST['id'], $_POST['productId'], (int) $_POST['unitPrice'], $_POST['quantity'], $_POST['userId']);
+  header("Location: index.php");
 }
 
 
@@ -178,11 +179,31 @@ if (isset($_POST['quantity'])) {
                   <strong class="text-black"><?php echo formatRupiah((int) $total); ?></strong>
                 </div>
               </div>
+              <?php if ( isset($user_data) ): ?>
+                <?php $send_data = getOrderItemById($user_data['id']) ?>
+              <?php endif; ?>
 
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-dark btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed
-                    To Checkout</button>
+                  <?php if ( isset($user_data) ): ?>
+                    <a href="https://wa.me/+6283850179316?text=<?php 
+                        $i = 1;
+                        $totalPrice = 0;                     
+                        while ($row = mysqli_fetch_assoc($send_data)) {
+                          $product = getProductById($row['productId']);
+                          $data_product = mysqli_fetch_assoc($product);
+                          $totalPrice += $row['totalPrice'];
+                          echo $i . ". " . $data_product['name'] . " (" . $row['quantity'] . ") " . " - " . formatRupiah((int)$row['unitPrice']);
+                          echo "%0a";
+                          
+                          $i++;
+                        }
+                        echo "Total: " . formatRupiah((int)$totalPrice);
+                      ?>" target="blank" class="btn btn-dark btn-lg py-3 btn-block">Proceed
+                    To Checkout</a>
+                  <?php endif; ?>
+
+                  <!-- <a href="#" class="btn btn-dark btn-lg py-3 btn-block">Proceed To Checkout</a> -->
                 </div>
               </div>
             </div>
