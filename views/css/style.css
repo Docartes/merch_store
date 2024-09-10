@@ -36,7 +36,7 @@ a.more {
 }
 
 .custom-navbar {
-  background: #3b5d50 !important;
+  background: #545454 !important;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -224,12 +224,12 @@ a.more {
   box-shadow: none;
 }
 .btn.btn-primary {
-  background: #3b5d50;
-  border-color: #3b5d50;
+  background: #545454;
+  border-color: #000;
 }
 .btn.btn-primary:hover {
-  background: #314d43;
-  border-color: #314d43;
+  background: #cdcdcd;
+  border-color: #000;
 }
 .btn.btn-secondary {
   color: #2f2f2f;
@@ -462,7 +462,7 @@ a.more {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: 2px solid #3b5d50;
+  border: 2px solid #545454;
   position: absolute;
   left: 0;
   top: 8px;
@@ -571,7 +571,7 @@ a.more {
   transition: 0.3s all ease;
 }
 .testimonial-slider-wrap #testimonial-nav > span:hover {
-  background: #3b5d50;
+  background: #545454;
   color: #ffffff;
 }
 .testimonial-slider-wrap #testimonial-nav .prev {
@@ -621,7 +621,7 @@ a.more {
 }
 .testimonial-slider-wrap .tns-nav button:hover:before,
 .testimonial-slider-wrap .tns-nav button.tns-nav-active:before {
-  background-color: #3b5d50;
+  background-color: #545454;
 }
 
 .before-footer-section {
@@ -697,7 +697,7 @@ a.more {
 .footer-section .subscription-form h3 {
   font-size: 18px;
   font-weight: 500;
-  color: #3b5d50;
+  color: #545454;
 }
 .footer-section .subscription-form .form-control {
   height: 50px;
@@ -709,7 +709,7 @@ a.more {
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-color: #3b5d50;
+  border-color: #545454;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
@@ -752,7 +752,7 @@ a.more {
   font-size: 32px;
   font-weight: 500;
   text-decoration: none;
-  color: #3b5d50;
+  color: #545454;
 }
 .footer-section .custom-social li {
   margin: 2px;
@@ -765,11 +765,11 @@ a.more {
   line-height: 40px;
   display: inline-block;
   background: #dce5e4;
-  color: #3b5d50;
+  color: #545454;
   border-radius: 50%;
 }
 .footer-section .custom-social li a:hover {
-  background: #3b5d50;
+  background: #545454;
   color: #ffffff;
 }
 .footer-section .border-top {
@@ -793,7 +793,7 @@ a.more {
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-color: #3b5d50;
+  border-color: #545454;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
@@ -821,7 +821,7 @@ a.more {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  background: #3b5d50;
+  background: #545454;
   margin-right: 20px;
   color: #ffffff;
 }
@@ -854,7 +854,7 @@ textarea {
   color: rgba(0, 0, 0, 0.8);
 }
 .site-blocks-table tbody tr:first-child td {
-  border-top: 1px solid #3b5d50 !important;
+  border-top: 1px solid #545454 !important;
 }
 .site-blocks-table .btn {
   background: none !important;
@@ -878,12 +878,12 @@ textarea {
 }
 
 .text-primary {
-  color: #3b5d50 !important;
+  color: #545454 !important;
 }
 
 .thankyou-icon {
   position: relative;
-  color: #3b5d50;
+  color: #545454;
 }
 .thankyou-icon:before {
   position: absolute;
