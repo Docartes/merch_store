@@ -7,5 +7,14 @@ $data = readCategory();
 
 if ( isset($_POST['name']) ) {
 	insertCategory($_POST['name']);
-	header("Location: ../views/category/category.php");
+	header("Location: ../views/dashboard");
+}
+
+
+if ( isset($_POST['category']) ) {
+	$name = htmlspecialchars($_POST['category']);
+
+	updateCategory($_GET['id'], $name);
+
+	header("Location: ../views/dashboard");
 }

@@ -1,9 +1,9 @@
-<?php  
+<?php
 session_start();
 
 include "../bootstrap/bootstrap.php";
 
-if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {	
+if (isset($_SESSION['error']) || isset($_SESSION['failed'])) {
 	$error_message = $_SESSION['error'];
 	$success_message = $_GET['status'];
 	$failed_message = $_SESSION['failed'];
@@ -16,12 +16,14 @@ if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php echo $css; ?>
 	<title>Register Page</title>
 </head>
+
 <body style="font-family: Karla">
 
 	<?php echo $navbar['not_login']; ?>
@@ -41,28 +43,28 @@ if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {
 
 		<?php if (isset($failed_message)): ?>
 			<div class="alert alert-danger" style="font-family: Karla;" role="alert">
-  			<?php echo $failed_message; ?>
+				<?php echo $failed_message; ?>
 			</div>
 			<?php session_destroy(); ?>
 		<?php endif; ?>
 
 		<?php if (isset($duplicate_message)): ?>
 			<div class="alert alert-danger" style="font-family: Karla;" role="alert">
-  			<?php echo $duplicate_message; ?>
+				<?php echo $duplicate_message; ?>
 			</div>
 			<?php session_destroy(); ?>
 		<?php endif; ?>
 
 		<?php if (isset($error_message)): ?>
 			<div class="alert alert-danger" style="font-family: Karla;" role="alert">
-	  		<?php echo $error_message; ?>
+				<?php echo $error_message; ?>
 			</div>
 			<?php session_destroy(); ?>
 		<?php endif; ?>
 
 		<?php if (isset($success_message)): ?>
 			<div class="alert alert-success" style="font-family: Karla;" role="alert">
-	  		<?php echo $success_message; ?>
+				<?php echo $success_message; ?>
 			</div>
 			<?php session_destroy(); ?>
 		<?php endif; ?>
@@ -71,6 +73,7 @@ if ( isset($_SESSION['error']) || isset($_SESSION['failed']) ) {
 
 
 	<?php echo $script; ?>
-	
+
 </body>
+
 </html>

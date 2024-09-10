@@ -36,7 +36,11 @@ a.more {
 }
 
 .custom-navbar {
+<<<<<<< HEAD
   background: #545454 !important;
+=======
+  background: #212529 !important;
+>>>>>>> 126773add3b55c22bfb774730cd664db5f982d80
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -155,7 +159,7 @@ a.more {
 }
 .hero p {
   color: rgba(255, 255, 255, 0.5);
-  margin-botom: 30px;
+  margin-bottom: 30px;
 }
 .hero .hero-img-wrap {
   position: relative;
@@ -254,7 +258,7 @@ a.more {
 }
 
 .product-section {
-  padding: 7rem 0;
+  padding: 5rem 0;
 }
 .product-section .product-item {
   text-align: center;

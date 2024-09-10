@@ -1,14 +1,18 @@
-<?php  
- 
+<?php
+
+$root_dir = dirname(__DIR__);
+
+include_once $root_dir . "./utils/uuid.php";
 include 'connection/connection.php';
 
-function check_duplicate_product($product_name) {
+function check_duplicate_product($product_name)
+{
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM products");
 
-	while ( $row = mysqli_fetch_assoc($data) ) {
-		if ( $row['name'] == htmlentities($product_name) ) {
+	while ($row = mysqli_fetch_assoc($data)) {
+		if ($row['name'] == htmlentities($product_name)) {
 			return true;
 		}
 	}
@@ -16,8 +20,20 @@ function check_duplicate_product($product_name) {
 	return false;
 }
 
+function getProductsByLimit($limit)
+{
+	global $conn;
 
-function readProducts() {
+	$query = "SELECT * FROM products LIMIT 3";
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
+
+function readProducts()
+{
 	global $conn;
 
 	$query = "SELECT * FROM products";
@@ -27,7 +43,19 @@ function readProducts() {
 	return $data;
 }
 
-function getProductById($id) {
+function getProductByCategory($categoryId)
+{
+	global $conn;
+
+	$query = "SELECT * FROM products WHERE categoryId = '$categoryId'";
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
+function getProductById($id)
+{
 	global $conn;
 
 	$query = "SELECT * FROM products WHERE id = '$id'";
@@ -37,19 +65,21 @@ function getProductById($id) {
 	return $data;
 }
 
-function insertProducts($name, $images, $price, $quantity_in_stock, $categoryId) {
+function insertProducts($name, $images, $price, $quantity_in_stock, $categoryId)
+{
 	global $conn;
+	$id = generateUuid();
+	$query = "INSERT INTO products (id, name, images, price, quantity_in_stock, categoryId) VALUES ('$id', '$name', '$images', $price, $quantity_in_stock, '$categoryId')";
 
-	$query = "INSERT INTO products (name, images, price, quantity_in_stock, categoryId) VALUES ('$name', '$images', $price, $quantity_in_stock, '$categoryId')";
-
-	if ( check_duplicate_product($name) == true ) {
+	if (check_duplicate_product($name) == true) {
 		return "Produk sudah terdaftar";
 	}
 
 	return mysqli_query($conn, $query);
 }
 
-function updateProducts($id, $name, $images, $price, $quantity_in_stock, $categoryId) {
+function updateProducts($id, $name, $images, $price, $quantity_in_stock, $categoryId)
+{
 	global $conn;
 
 	$query = "UPDATE products SET name = '$name', images = '$images', price = $price, quantity_in_stock = $quantity_in_stock, categoryId = '$categoryId' WHERE id = '$id'";
@@ -57,7 +87,8 @@ function updateProducts($id, $name, $images, $price, $quantity_in_stock, $catego
 	return mysqli_query($conn, $query);
 }
 
-function deleteProducts($id) {
+function deleteProducts($id)
+{
 	global $conn;
 
 	$query = "DELETE FROM products WHERE id = '$id'";

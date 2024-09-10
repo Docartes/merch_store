@@ -16,7 +16,7 @@ if ( isset($_POST['name']) ) {
     $image = htmlspecialchars($_POST['image']);
     $price = (int)$_POST['price'];
     $stok = (int)$_POST['stok'];
-    $categoryId = (int)$_POST['categoryId'];
+    $categoryId = $_POST['categoryId'];
 
 
     updateProducts($id, $name, $image, $price, $stok, $categoryId);
@@ -86,7 +86,7 @@ if ( isset($_POST['name']) ) {
                             </div>
                             <div class="form-group">
                                 <label for="productPrice">Category Id</label>
-                                <input type="number" class="form-control" id="productPrice" name="categoryId" value="<?php echo $row['categoryId']; ?>">
+                                <input type="text" class="form-control" id="productPrice" name="categoryId" value="<?php echo $row['categoryId']; ?>">
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
                             <a href="../dashboard" class="btn btn-secondary mt-4">Cancel</a>
