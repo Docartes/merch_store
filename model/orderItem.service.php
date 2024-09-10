@@ -36,13 +36,12 @@ function insertOrderItem($productId, $unitPrice, $quantity, $userId)
 	return mysqli_query($conn, $query);
 }
 
-function updateOrderItem($id, $productId, $unitPrice, $quantity, $userId)
-{
+function updateOrderItem($id, $quantity, $unitPrice) {
 	global $conn;
 
 	$totalPrice = $unitPrice * $quantity;
 
-	$query = "UPDATE orderItem SET productId = '$productId', unitPrice = '$unitPrice', quantity = '$quantity', userId = '$userId', totalPrice = '$totalPrice' WHERE id = '$id'";
+	$query = "UPDATE orderItem SET quantity = '$quantity', totalPrice = '$totalPrice' WHERE id = '$id'";
 
 	return mysqli_query($conn, $query);
 }

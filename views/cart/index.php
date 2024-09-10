@@ -30,12 +30,6 @@ if (isset($_GET['remove'])) {
   header("Location: index.php");
 }
 
-if (isset($_POST['quantity'])) {
-  updateOrderItem($_POST['id'], $_POST['productId'], (int) $_POST['unitPrice'], $_POST['quantity'], $_POST['userId']);
-  header("Location: index.php");
-}
-
-
 ?>
 
 
@@ -71,7 +65,7 @@ if (isset($_POST['quantity'])) {
         <?php if (isset($err_msg)): ?>
           <h5 class="text-center text-danger pb-4"><?php echo $err_msg; ?></h5>
         <?php endif; ?>
-        <form class="col-md-12" method="post" action="">
+        <form class="col-md-12" method="post" action="edit.php">
           <div class="site-blocks-table">
             <table class="table">
               <thead>
@@ -92,10 +86,10 @@ if (isset($_POST['quantity'])) {
                     <?php $rawDataProduct = getProductById($row['productId']); ?>
                     <?php $dataProduct = mysqli_fetch_assoc($rawDataProduct) ?>
                     <tr>
-                      <input type="text" name="id" hidden value="<?php echo $row['id']; ?>">
-                      <input type="text" name="unitPrice" hidden value="<?php echo $row['unitPrice']; ?>">
-                      <input type="text" name="userId" hidden value="<?php echo $row['userId']; ?>">
-                      <input type="text" name="productId" hidden value="<?php echo $row['productId']; ?>">
+                      <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                      <input type="hidden" name="unitPrice" value="<?php echo $row['unitPrice']; ?>">
+                      <input type="hidden" name="userId" value="<?php echo $row['userId']; ?>">
+                      <input type="hidden" name="productId" value="<?php echo $row['productId']; ?>">
                       <td class="product-thumbnail">
                         <img src="<?php echo $dataProduct['images'] ?>" alt="Image" class="img-fluid">
                       </td>
@@ -122,11 +116,18 @@ if (isset($_POST['quantity'])) {
                       </td>
                       <td><?php echo formatRupiah((int) $row['totalPrice']); ?></td>
                       <td><a href="index.php?remove=<?php echo $row['id']; ?>" class="btn btn-black btn-sm">X</a></td>
-                      <td><button type="submit" class="btn btn-black btn-sm"><i class="bi bi-pencil-square"></i></button>
+                      <td>
+                        <button type="submit" class="btn btn-black btn-sm">
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <!-- <a href="edit.php?"  class="btn btn-black btn-sm"><i class="bi bi-pencil-square"></i></a> -->
                       </td>
                     </tr>
                   <?php endwhile; ?>
                 </tbody>
+                <!-- <button type="submit" class="btn btn-black btn-sm">
+                  <i class="bi bi-pencil-square"></i>
+                </button> -->
               <?php endif ?>
             </table>
           </div>
@@ -139,6 +140,7 @@ if (isset($_POST['quantity'])) {
             <div class="col-md-6">
               <button class="btn btn-outline btn-dark btn-sm btn-block" onclick="window.location='../shop'">Continue
                 Shopping</button>
+                
             </div>
           </div>
         </div>
