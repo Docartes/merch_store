@@ -1,13 +1,18 @@
-<?php  
-include './connection/connection.php';
+<?php
+$root_dir = dirname(__DIR__);
 
-function check_duplicate($blog_title) {
+include 'connection/connection.php';
+include_once $root_dir . './../utils/uuid.php';
+
+
+function check_duplicate_blogs($blog_title)
+{
 	global $conn;
 
 	$data = mysqli_query($conn, "SELECT * FROM blogs");
 
-	while ( $row = mysqli_fetch_assoc($data) ) {
-		if ( $row['title'] == htmlentities($blog_title) ) {
+	while ($row = mysqli_fetch_assoc($data)) {
+		if ($row['title'] == htmlentities($blog_title)) {
 			return true;
 		}
 	}
@@ -15,7 +20,8 @@ function check_duplicate($blog_title) {
 	return false;
 }
 
-function readBlogs() {
+function readBlogs()
+{
 	global $conn;
 
 	$query = "SELECT * FROM blogs";
@@ -25,27 +31,51 @@ function readBlogs() {
 	return $data;
 }
 
-function insertBlogs($title, $content, $userId) {
+function getBlogById($id) {
 	global $conn;
 
-	$query = "INSERT INTO blogs (title, content, userId) VALUES ('$title', '$content', '$userId')";
+	$query = "SELECT * FROM blogs WHERE id = '$id'";
 
-	if ( check_duplicate($title) == true ) {
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
+function getBlogsByLimit($limit) {
+	global $conn;
+
+	$query = "SELECT * FROM blogs LIMIT 3";
+
+
+	$data = mysqli_query($conn, $query);
+
+	return $data;
+}
+
+function insertBlogs($title, $image, $content, $userId)
+{
+	global $conn;
+	$id = generateUuid();
+	$query = "INSERT INTO blogs (id, image, title, content, userId) VALUES ('$id', '$image', '$title', '$content', '$userId')";
+
+	if (check_duplicate_blogs($title) == true) {
 		return 'Blog sudah terdaftar';
 	}
 
 	return mysqli_query($conn, $query);
 }
 
-function updateBlogs($id, $title, $content,$userId) {
+function updateBlogs($id, $image, $title, $content, $userId)
+{
 	global $conn;
 
-	$query = "UPDATE blogs SET title = '$title', content = '$content', userId = '$userId' WHERE id = '$id'";
+	$query = "UPDATE blogs SET image = '$image', title = '$title', content = '$content', userId = '$userId' WHERE id = '$id'";
 
 	return mysqli_query($conn, $query);
 }
 
-function deleteBogs($id) {
+function deleteBlog($id)
+{
 	global $conn;
 
 	$query = "DELETE FROM blogs WHERE id = '$id'";
