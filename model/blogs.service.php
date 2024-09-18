@@ -1,9 +1,8 @@
 <?php
 $root_dir = dirname(__DIR__);
 
+include_once $root_dir . '/utils/uuid.php';
 include 'connection/connection.php';
-include_once $root_dir . './../utils/uuid.php';
-
 
 function check_duplicate_blogs($blog_title)
 {
@@ -31,7 +30,8 @@ function readBlogs()
 	return $data;
 }
 
-function getBlogById($id) {
+function getBlogById($id)
+{
 	global $conn;
 
 	$query = "SELECT * FROM blogs WHERE id = '$id'";
@@ -41,7 +41,8 @@ function getBlogById($id) {
 	return $data;
 }
 
-function getBlogsByLimit($limit) {
+function getBlogsByLimit($limit)
+{
 	global $conn;
 
 	$query = "SELECT * FROM blogs LIMIT 3";

@@ -2,7 +2,7 @@
 
 $root_dir = dirname(__DIR__);
 
-include_once $root_dir . "./../utils/uuid.php";
+include_once $root_dir . "/../utils/uuid.php";
 include $root_dir . '/connection/connection.php';
 
 

@@ -1,10 +1,10 @@
-<?php  
+<?php
 
 include "../model/connection/connection.php";
 
 $account_management_table = "
 CREATE TABLE account_management (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id CHAR(36) NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE account_management (
 
 $category_table = "
 CREATE TABLE category (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id CHAR(36) NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
@@ -23,12 +23,12 @@ CREATE TABLE category (
 
 $product_table = "
 CREATE TABLE products (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id CHAR(36) NOT NULL PRIMARY KEY,
 	name TEXT NOT NULL,
 	images TEXT NOT NULL,
 	price DOUBLE NOT NULL,
 	quantity_in_stock INT NOT NULL DEFAULT 0,
-	categoryId uuid NOT NULL,
+	categoryId CHAR(36) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (categoryId) REFERENCES category(id) ON DELETE CASCADE
@@ -36,11 +36,11 @@ CREATE TABLE products (
 
 $blogs_table = "
 CREATE TABLE blogs (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
+	id CHAR(36) NOT NULL PRIMARY KEY,
 	image TEXT NOT NULL,
 	title VARCHAR(255) NOT NULL,
 	content TEXT NOT NULL,
-	userId uuid NOT NULL,
+	userId CHAR(36) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (userId) REFERENCES account_management(id)
@@ -48,15 +48,22 @@ CREATE TABLE blogs (
 
 $order_item_table = "
 CREATE TABLE orderItem (
-	id uuid DEFAULT uuid() NOT NULL PRIMARY KEY,
-	productId uuid NOT NULL,
+	id CHAR(36) NOT NULL PRIMARY KEY,
+	productId CHAR(36) NOT NULL,
 	unitPrice FLOAT NOT NULL,
 	quantity INT NOT NULL,
-	totalPrice FLOAT NOT NULL.
-	userId uuid NOT NULL,
+	totalPrice FLOAT NOT NULL,
+	userId CHAR(36) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 	FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE,
 	FOREIGN KEY (userId) REFERENCES account_management(id) ON DELETE CASCADE
 );
 ";
+
+
+mysqli_query($conn, $account_management_table);
+mysqli_query($conn, $category_table);
+mysqli_query($conn, $product_table);
+mysqli_query($conn, $blogs_table);
+mysqli_query($conn, $order_item_table);

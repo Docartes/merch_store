@@ -1,8 +1,9 @@
 <?php
 $root_dir = dirname(__DIR__);
 
+include_once $root_dir . '/utils/uuid.php';
 include "connection/connection.php";
-include_once $root_dir . './../utils/uuid.php';
+
 function readOrderItem()
 {
 	global $conn;

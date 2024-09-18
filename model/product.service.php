@@ -2,7 +2,7 @@
 
 $root_dir = dirname(__DIR__);
 
-include_once $root_dir . "./utils/uuid.php";
+include_once $root_dir . "/utils/uuid.php";
 include 'connection/connection.php';
 
 function check_duplicate_product($product_name)
