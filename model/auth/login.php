@@ -21,9 +21,9 @@ function login($username, $password) {
 
 	while ( $row = mysqli_fetch_assoc($data) ) {
 		if ( $row['username'] == htmlspecialchars($username) && decrypt_password($row['password']) == htmlspecialchars($password) ) {
-			return true;
-		} else {
-			return false;
+			return ["username" => $row['username'], "id" => $row['id'], "email" => $row['email'], "role" => $row['role']];
 		}
 	}
+
+	return false;
 }
